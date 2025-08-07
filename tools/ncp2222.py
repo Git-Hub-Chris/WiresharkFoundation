@@ -551,8 +551,8 @@ class NCP:
 				msg.write("%s records for 2222/0x%x include sensitive fields; details redacted.\n" \
 					% (descr, self.FunctionCode()))
 			else:
-				msg.write("%s records for 2222/0x%x sum to %d bytes minimum, but param1 shows %d\n" \
-					% (descr, self.FunctionCode(), lower, min))
+				msg.write("%s records for 2222/0x%x include sensitive fields; details redacted.\n" \
+					% (descr, self.FunctionCode()))
 			error = 1
 		if max != upper:
 			if contains_sensitive:
