@@ -237,9 +237,9 @@ class PTVC(NamedList):
 			elif expected_offset != offset and offset != -1:
 				# Redact sensitive field names in log messages
 				def is_sensitive_field(field_name):
-				    # Add more sensitive field names as needed
-				    sensitive_names = {"New Password", "Password", "new_password", "password"}
-				    return field_name in sensitive_names
+				    # Case-insensitive check for sensitive field names
+				    sensitive_keywords = ["password", "new password"]
+				    return any(kw in field_name.lower() for kw in sensitive_keywords)
 				field_name = field.HFName()
 				if is_sensitive_field(field_name):
 				    field_name = "[REDACTED]"
