@@ -235,8 +235,16 @@ class PTVC(NamedList):
 				pass
 
 			elif expected_offset != offset and offset != -1:
+				# Redact sensitive field names in log messages
+				def is_sensitive_field(field_name):
+				    # Add more sensitive field names as needed
+				    sensitive_names = {"New Password", "Password", "new_password", "password"}
+				    return field_name in sensitive_names
+				field_name = field.HFName()
+				if is_sensitive_field(field_name):
+				    field_name = "[REDACTED]"
 				msg.write("Expected offset in %s for %s to be %d\n" % \
-					(name, field.HFName(), expected_offset))
+					(name, field_name, expected_offset))
 				sys.exit(1)
 
 			# We can't make a PTVC list from a variable-length
