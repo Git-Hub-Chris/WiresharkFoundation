@@ -521,6 +521,19 @@ class NCP:
 		lower = min_hdr_length
 		upper = min_hdr_length
 
+		def is_sensitive_field(record):
+			# Try to detect if the field is sensitive (e.g., password)
+			field = record[REC_FIELD]
+			# Check if the field has a name or description containing 'password'
+			name = getattr(field, 'name', '')
+			desc = getattr(field, 'desc', '')
+			if (isinstance(name, str) and 'password' in name.lower()) or \
+			   (isinstance(desc, str) and 'password' in desc.lower()):
+				return True
+			return False
+
+		contains_sensitive = any(is_sensitive_field(record) for record in records)
+
 		for record in records:
 			rec_size = record[REC_LENGTH]
 			rec_lower = rec_size
@@ -534,12 +547,20 @@ class NCP:
 
 		error = 0
 		if min != lower:
-			msg.write("%s records for 2222/0x%x sum to %d bytes minimum, but param1 shows %d\n" \
-				% (descr, self.FunctionCode(), lower, min))
+			if contains_sensitive:
+				msg.write("%s records for 2222/0x%x include sensitive fields; details redacted.\n" \
+					% (descr, self.FunctionCode()))
+			else:
+				msg.write("%s records for 2222/0x%x sum to %d bytes minimum, but param1 shows %d\n" \
+					% (descr, self.FunctionCode(), lower, min))
 			error = 1
 		if max != upper:
-			msg.write("%s records for 2222/0x%x sum to %d bytes maximum, but param1 shows %d\n" \
-				% (descr, self.FunctionCode(), upper, max))
+			if contains_sensitive:
+				msg.write("%s records for 2222/0x%x include sensitive fields; details redacted.\n" \
+					% (descr, self.FunctionCode()))
+			else:
+				msg.write("%s records for 2222/0x%x sum to %d bytes maximum, but param1 shows %d\n" \
+					% (descr, self.FunctionCode(), upper, max))
 			error = 1
 
 		if error == 1:
