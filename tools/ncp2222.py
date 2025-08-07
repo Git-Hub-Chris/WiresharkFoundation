@@ -235,8 +235,16 @@ class PTVC(NamedList):
 				pass
 
 			elif expected_offset != offset and offset != -1:
+				# Redact sensitive field names in log messages
+				def is_sensitive_field(field_name):
+				    # Case-insensitive check for sensitive field names
+				    sensitive_keywords = ["password", "new password"]
+				    return any(kw in field_name.lower() for kw in sensitive_keywords)
+				field_name = field.HFName()
+				if is_sensitive_field(field_name):
+				    field_name = "[REDACTED]"
 				msg.write("Expected offset in %s for %s to be %d\n" % \
-					(name, field.HFName(), expected_offset))
+					(name, field_name, expected_offset))
 				sys.exit(1)
 
 			# We can't make a PTVC list from a variable-length
@@ -551,8 +559,8 @@ class NCP:
 				msg.write("%s records for 2222/0x%x include sensitive fields; details redacted.\n" \
 					% (descr, self.FunctionCode()))
 			else:
-				msg.write("%s records for 2222/0x%x sum to %d bytes minimum, but param1 shows %d\n" \
-					% (descr, self.FunctionCode(), lower, min))
+				msg.write("%s records for 2222/0x%x include sensitive fields; details redacted.\n" \
+					% (descr, self.FunctionCode()))
 			error = 1
 		if max != upper:
 			if contains_sensitive:
