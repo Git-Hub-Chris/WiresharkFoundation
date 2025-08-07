@@ -1,118 +1,255 @@
-Overview of changes in Ethereal 0.3.15:
+Wireshark 1.8.2 Release Notes
 
-* OSPF fixes (Hannes)
-* Preliminary IPv6 support (Hannes)
-* Name resolution (Laurent)
-* Font and help option (Laurent)
-* Token ring fixes (Gilbert)
-* DLT_RAW #define fixes (Laurent, Hannes and a few others)
+   ------------------------------------------------------------------
 
-Overview of changes in Ethereal 0.3.14:
+What is Wireshark?
 
-* Added Laurent's fixes to pntoh[sl].
-* RIP fixes (Laurent)
-* Added Gilbert's BOOTP code.
+   Wireshark is the world's most popular network protocol analyzer.
+   It is used for troubleshooting, analysis, development and
+   education.
 
-Overview of changes in Ethereal 0.3.13:
+What's New
 
-* Made the tree items "sticky"
-* Expanded the pntoh[sl] macros, fixed alignment problems with IPX code.
-* Changes to packet-ppp and packet-raw
+  Bug Fixes
 
-Overview of changes in Ethereal 0.3.12:
+   The following vulnerabilities have been fixed.
 
-* RIP support (Hannes)
-* LPR/LPD support (Gilbert)
-* Changes to #includes to improve compatibility.
+     o wnpa-sec-2012-13
 
-Overview of changes in Ethereal 0.3.11:
+       The DCP ETSI dissector could trigger a zero division. Reported
+       by Laurent Butti. (Bug 7566)
 
-* Fixed a file capture bug.
+       Versions affected: 1.4.0 to 1.4.14, 1.6.0 to 1.6.9, 1.8.0 to
+       1.8.1.
 
-Overview of changes in Ethereal 0.3.10:
+       CVE-2012-4285
 
-* Fixed a Makefile bug with the new snprintf package.
+     o wnpa-sec-2012-14
 
-Overview of changes in Ethereal 0.3.9:
+       The MongoDB dissector could go into a large loop. Reported by
+       Ben Schmidt. (Bug 7572)
 
-* Switched to a different version of snprintf.c.
-* Minor bug fixes.
-* Fixes to Makefile.am.
+       Versions affected: 1.8.0 to 1.8.1.
 
-Overview of changes in Ethereal 0.3.8:
+       CVE-2012-4287
 
-* PostScript(R) output (Gilbert)
-* More OSPF code (Hannes)
-* Enhanced DNS (Bobo)
+     o wnpa-sec-2012-15
 
-Overview of changes in Ethereal 0.3.7:
+       The XTP dissector could go into an infinite loop. Reported by
+       Ben Schmidt. (Bug 7571)
 
-* Enhanced OSPF (Hannes)
-* Fixed small bug in filter dialog.
+       Versions affected: 1.4.0 to 1.4.14, 1.6.0 to 1.6.9, 1.8.0 to
+       1.8.1.
 
-Overview of changes in Ethereal 0.3.6:
+       CVE-2012-4288
 
-* Added OSPF support, thanks to Hannes Boehm.
-* Added -B, -P, and -T flags.
+     o wnpa-sec-2012-16
 
-Overview of changes in Ethereal 0.3.5:
+       The ERF dissector could overflow a buffer. Reported by Laurent
+       Butti. (Bug 7563)
 
-* Command line argument fixes/upgrades.
-* Compatibility fixes.
-* Initial pod/man page documentation.
-* Miscellaneous changes to the way things are done in capture.c.
-* Initial support for DNS and IGMP.
+       Versions affected: 1.8.0 to 1.8.1.
 
-Overview of changes in Ethereal 0.3.4:
+       CVE-2012-4294 CVE-2012-4295
 
-* Printer preferences dialog added (Gilbert)
-* Misc fixes/upgrades.
+     o wnpa-sec-2012-17
 
-Overview of changes in Ethereal 0.3.3:
+       The AFP dissector could go into a large loop. Reported by
+       Stefan Cornelius. (Bug 7603)
 
-* Added PPP support, thanks to Mike Hall.
-* Added dialogs for errors/warnings.
-* Support for the -r flag was added.
-* Other minor fixes/upgrades.
+       Versions affected: 1.4.0 to 1.4.14, 1.6.0 to 1.6.9, 1.8.0 to
+       1.8.1.
 
-Overview of changes in Ethereal 0.3.2:
+       CVE-2012-4289
 
-* Misc bug fixes & minor enhancements.
-* Added preliminary ICMP support
-* Added preliminary printing support (Gilbert)
+     o wnpa-sec-2012-18
 
-Overview of changes in Ethereal 0.3.1:
+       The RTPS2 dissector could overflow a buffer. Reported by
+       Laurent Butti. (Bug 7568)
 
-* Fixed bug that prevented capturing with a filter.
-* Fixed misc. header problems.
+       Versions affected: 1.4.0 to 1.4.14, 1.6.0 to 1.6.9, 1.8.0 to
+       1.8.1.
 
-Overview of changes in Ethereal 0.3.0:
+       CVE-2012-4296
 
-* Initial support for filters.
-* Fixes/enhancements for IPX and token ring (Gilbert).
+     o wnpa-sec-2012-19
 
-Overview of changes in Ethereal 0.2.3:
+       The GSM RLC MAC dissector could overflow a buffer. Reported by
+       Laurent Butti. (Bug 7561)
 
-* Added support for IPX, thanks to Gilbert.
+       Versions affected: 1.6.0 to 1.6.9, 1.8.0 to 1.8.1.
 
-Overview of changes in Ethereal 0.2.2:
+       CVE-2012-4297
 
-* Added support for token ring, thanks to Gilbert Ramirez, Jr.
+     o wnpa-sec-2012-20
 
-Overview of changes in Ethereal 0.2.1:
+       The CIP dissector could exhaust system memory. Reported by Ben
+       Schmidt. (Bug 7570)
 
-* Internal structs for ARP/RARP, IP, TCP, and UDP were created.  Trying to 
-  sort out which #includes were needed for each system was just too much of
-  a hassle.
-* Added support for systems that don't have snprintf() and vsnprintf(), thanks
-  to Theo de Raadt.
-* Minor changes to the README file.
+       Versions affected: 1.4.0 to 1.4.14, 1.6.0 to 1.6.9, 1.8.0 to
+       1.8.1.
 
-Overview of changes in Ethereal 0.2.0:
+       CVE-2012-4291
 
-* Initial public release.
-* GNU autoconf-ified distribution
-* Runs under Linux 2.0.x and Solaris 2.6.
-* Requires GTK+ (1.0.1 tested) and libpcap (0.4a6 tested)
-* For optimal results under Linux, the Karpski libpcap should be used.
-* General documentation and a minimal web site have been prepared.
+     o wnpa-sec-2012-21
+
+       The STUN dissector could crash. Reported by Laurent Butti.
+       (Bug 7569)
+
+       Versions affected: 1.4.0 to 1.4.14, 1.6.0 to 1.6.9, 1.8.0 to
+       1.8.1.
+
+       CVE-2012-4292
+
+     o wnpa-sec-2012-22
+
+       The EtherCAT Mailbox dissector could abort. Reported by
+       Laurent Butti. (Bug 7562)
+
+       Versions affected: 1.4.0 to 1.4.14, 1.6.0 to 1.6.9, 1.8.0 to
+       1.8.1.
+
+       CVE-2012-4293
+
+     o wnpa-sec-2012-23
+
+       The CTDB dissector could go into a large loop. Reported by Ben
+       Schmidt. (Bug 7573)
+
+       Versions affected: 1.4.0 to 1.4.14, 1.6.0 to 1.6.9, 1.8.0 to
+       1.8.1.
+
+       CVE-2012-4290
+
+     o wnpa-sec-2012-24
+
+       The pcap-ng file parser could trigger a zero division. (Bug
+       7533)
+
+       Versions affected: 1.8.0 to 1.8.1.
+
+       CVE-2012-4286
+
+     o wnpa-sec-2012-25
+
+       The Ixia IxVeriWave file parser could overflow a buffer. (Bug
+       7533)
+
+       Versions affected: 1.8.0 to 1.8.1.
+
+       CVE-2012-4298
+
+   The following bugs have been fixed:
+
+     o Move Y.1711 out of MPLS dissector. (Bug 6787)
+
+     o Patch: Add frame.interface_id support for ERF file format.
+       (Bug 7266)
+
+     o Freeze when Resizing or Moving while capturing. (Bug 7305)
+
+     o Wireshark crashes when using multiple files. (Bug 7423)
+
+     o Wireshark crashes on opening very short NFS pcap file. (Bug
+       7498)
+
+     o Analyze->Apply as Filter and Analyze->Prepare a Filter cause
+       crashes. (Bug 7506)
+
+     o crashes in interface list, pipe handling. (Bug 7511)
+
+     o ISDN LAPD X.31 packet traffic can not be decoded. (Bug 7514)
+
+     o GIOP request_id used for sub dissectors is not assigned when
+       decoding GIOP 1.2 Request message. (Bug 7516)
+
+     o pcap-ng -ISB always writes 0 for isb_ifrecv option. (Bug 7523)
+
+     o GSM classmark3 decode wrong. (Bug 7524)
+
+     o mem corruption\heap corruption\div0 bugs. (Bug 7533)
+
+     o DNS AD flag not shown properly. (Bug 7555)
+
+     o Wireshark and TShark crash at start with invalid color filter
+       on SPARC. (Bug 7634)
+
+  New and Updated Features
+
+   There are no new features in this release.
+
+  New Protocol Support
+
+   There are no new protocols in this release.
+
+  Updated Protocol Support
+
+   AFP, Apache JServ Protocol v1.3, Bluetooth L2CAP, CIP, CTDB, DCP
+   ETSI, ERF, EtherCAT Mailbox, FC Link Control, GIOP, GSM A, GSM RLC
+   MAC, GTP, GTPv2, ISDN, LISP, MongoDB, MPLS ITU-T Y.1711 OAM, MPLS
+   PM, NFS, RTPS2, SCTP, STUN, XTP
+
+  New and Updated Capture File Support
+
+   Ixia IxVeriWave, pcap-ng
+
+Getting Wireshark
+
+   Wireshark source code and installation packages are available from
+   http://www.wireshark.org/download.html.
+
+  Vendor-supplied Packages
+
+   Most Linux and Unix vendors supply their own Wireshark packages.
+   You can usually install or upgrade Wireshark using the package
+   management system specific to that platform. A list of third-party
+   packages can be found on the download page on the Wireshark web
+   site.
+
+File Locations
+
+   Wireshark and TShark look in several different locations for
+   preference files, plugins, SNMP MIBS, and RADIUS dictionaries.
+   These locations vary from platform to platform. You can use
+   About→Folders to find the default locations on your system.
+
+Known Problems
+
+   Dumpcap might not quit if Wireshark or TShark crashes. (Bug 1419)
+
+   The BER dissector might infinitely loop. (Bug 1516)
+
+   Capture filters aren't applied when capturing from named pipes.
+   (Bug 1814)
+
+   Filtering tshark captures with display filters (-R) no longer
+   works. (Bug 2234)
+
+   The 64-bit Windows installer does not support Kerberos decryption.
+   (Win64 development page)
+
+   Application crash when changing real-time option. (Bug 4035)
+
+   Hex pane display issue after startup. (Bug 4056)
+
+   Packet list rows are oversized. (Bug 4357)
+
+   Summary pane selected frame highlighting not maintained. (Bug
+   4445)
+
+   Wireshark and TShark will display incorrect delta times in some
+   cases. (Bug 4985)
+
+Getting Help
+
+   Community support is available on Wireshark's Q&A site and on the
+   wireshark-users mailing list. Subscription information and
+   archives for all of Wireshark's mailing lists can be found on the
+   web site.
+
+   Official Wireshark training and certification are available from
+   Wireshark University.
+
+Frequently Asked Questions
+
+   A complete FAQ is available on the Wireshark web site.
