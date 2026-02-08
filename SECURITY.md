@@ -4,7 +4,7 @@
 If you discover a security vulnerability, we strongly encourage you to report it to us immediately. 
 
 ## Supported Versions
-We actively support the latest stable version of our software. For specific version support details, please visit our [Release Notes](./RELEASE_NOTES.md).
+We actively support the latest stable version of our software.
 
 ## Security Update Process
 Once a vulnerability is reported, we will investigate it and determine the best course of action. We will communicate with the reporter and aim to release fixes promptly, typically within a 30-day timeframe. 
